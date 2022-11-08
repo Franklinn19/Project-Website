@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise2</title>
+
+
+</head>
+<body>
+ <!-- Title at top of screen -->
+ 
+    <h1>Rock&nbsp;Paper&nbsp;Scissors </h1>
+
+ <!-- creation/writing on button -->
+ <h2>Winner is best two out of three!</h2>
+ <h3>Player <span id="uScore">0</span> - <span id="cScore">0</span> Computer</h3>
+    
+    <button class="choices"><strong>rock</strong></button>
+    &nbsp; 
+    <button class="choices"><strong>paper</strong></button>
+    &nbsp;
+    <button class="choices"><strong>scissors</strong></button>
+    
+<!-- %nbsp; is spaces -->
+
+    <script>
+// querySelectorAll = method used because NodeList (collection of document nodes)uses the forEach()
+//create score variable
+        const choices = document.querySelectorAll(".choices");
+        let uScore = 0;
+        let cScore = 0;
+        
+
+        //addEventListener () starts when user clicks on a button
+        // click=event and when called by callback addEventListener then need user selection 
+
+        choices.forEach((choice)=> {
+            choice.addEventListener("click", function (){
+
+
+//  to get the selection computer must read value of textContent 
+// (Dom property to set text inside an element)
+//store text value in a variable: uPlay (user's play)
+
+
+const uPlay = this.textContent;
+
+
+// now create computer variables and use an array to allow computer to "select" from choices and index
+// implement Math function to tell computer how to process the text value
+
+const cChoices = ["rock","paper","scissors"];
+const cPlay = cChoices[Math.floor(Math.random()* 3)];
+
+comparePlays(uPlay,cPlay);
+liveScore();
+        if (checkScore(0)) {
+          uScore = cScore = 0;
+          liveScore();
+        }
+      
+});
+});
+
+
+</script>
+  
+<script src="Exercise2.js"></script>
+
+</body>
+</html>
